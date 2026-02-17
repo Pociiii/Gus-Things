@@ -18,17 +18,17 @@ function rollDice() {
   else if (roll <= 70) {
     result = "Swap partners";
     action = "Swap partners between two couples/3some";
-    fallback = "Change pose OR form a couple ";
+    fallback = "Change pose OR Form a couple ";
   }
   else if (roll <= 80) {
     result = "Expand";
     action = "Couple + free player → 3some";
-    fallback = "Swap partners OR form a couple OR Change pose";
+    fallback = "Swap partners OR Form a couple OR Change pose";
   }
   else if (roll <= 90) {
     result = "Free one player";
-    action = "Free one player from a couple/3some";
-    fallback = "Expand OR Change pose";
+    action = "Free one player from a 3some";
+    fallback = "Expand OR Form a couple OR Change pose";
   }
   else {
     result = "Roller chooses";
