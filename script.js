@@ -37,7 +37,7 @@ function rollDice() {
   }
 
   document.getElementById("result").innerText =
-    "Rolled: " + roll + "Result: " + result +
+    "Rolled: " + roll + " " + result +
     "\nAction: " + action +
     "\nFallback: " + fallback;
 }
