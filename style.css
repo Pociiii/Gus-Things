@@ -99,7 +99,7 @@ td:first-child {
 }
 
 .credit {
-  position: fixed;
+  position: right;
   bottom: 14px;
   right: 18px;
   font-size: 13px;
@@ -122,3 +122,4 @@ td:first-child {
     grid-template-columns: 1fr;
   }
 }
+
