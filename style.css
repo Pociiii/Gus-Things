@@ -7,7 +7,7 @@ body {
 
 
 .wrapper {
-  max-width: 1100px;
+  max-width: 1400px;
   margin: auto;
   padding: 20px;
 }
@@ -76,12 +76,12 @@ main {
 table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 th, td {
   border: 1px solid #c300ff;
-  padding: 8px;
+  padding: 10px;
   text-align: left;
 }
 
@@ -94,10 +94,14 @@ tr:nth-child(even) {
   background: rgba(255,255,255,0.05);
 }
 
+td:first-child {
+  white-space: nowrap;
+  font-weight: bold;
+}
+
 /* Mobile */
 @media (max-width: 800px) {
   main {
     grid-template-columns: 1fr;
   }
 }
-
