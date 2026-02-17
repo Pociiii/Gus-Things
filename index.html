@@ -2,16 +2,90 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Dice Controller</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Club Dice Controller</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>🎲 Dice Roll</h1>
+<div class="wrapper">
 
-<button onclick="rollDice()">ROLL</button>
+  <header>
+    <h1>🎲 MPC Dice Controller</h1>
+    <button onclick="rollDice()">ROLL</button>
+    <div id="result">Roll to begin</div>
+  </header>
 
-<h2 id="result">Roll to begin</h2>
+  <main>
+
+    <!-- RULES -->
+    <section class="panel">
+      <h2>Rules</h2>
+      <ul>
+        <li>Decide game duration before starting (ex: 20 min or 10 rounds)</li>
+        <li><strong>/roll100</strong> when it's your turn</li>
+        <li>The roller chooses <strong>who acts</strong>, not themselves</li>
+        <li>Respect everyone’s preferences & limits</li>
+        <li>If a player delays, Host skips to next player</li>
+        <li>Poses change <strong>only via dice actions</strong></li>
+        <li>Host may speed up play to keep momentum</li>
+        <li>Use Group/Local Chat to track rolls. Keep sex in PM</li>
+      </ul>
+    </section>
+
+    <!-- ROLL TABLE -->
+    <section class="panel">
+      <h2>Roll Table (1–100)</h2>
+
+      <table>
+        <tr>
+          <th>Roll</th>
+          <th>Action</th>
+          <th>Fallback</th>
+        </tr>
+
+        <tr>
+          <td>01–30</td>
+          <td>Pick 2 free players → form a couple</td>
+          <td>Break a couple or 3some</td>
+        </tr>
+
+        <tr>
+          <td>31–60</td>
+          <td>Change pose of an existing couple or 3some</td>
+          <td>Pick 2 free players → form a couple</td>
+        </tr>
+
+        <tr>
+          <td>61–70</td>
+          <td>Swap partners between two couples or 3some</td>
+          <td>Change pose</td>
+        </tr>
+
+        <tr>
+          <td>71–80</td>
+          <td>Free one player from a couple or 3some</td>
+          <td>Swap partners</td>
+        </tr>
+
+        <tr>
+          <td>81–90</td>
+          <td>Couple + free player → expand interaction</td>
+          <td>Free one player from a 3some</td>
+        </tr>
+
+        <tr>
+          <td>91–100</td>
+          <td>Roller chooses any action</td>
+          <td>Host veto if it slows flow</td>
+        </tr>
+
+      </table>
+    </section>
+
+  </main>
+
+</div>
 
 <script src="script.js"></script>
 </body>
