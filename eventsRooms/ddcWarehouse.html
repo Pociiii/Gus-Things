@@ -62,7 +62,7 @@
             <div class="archive-item">
                 <h3>Private Orgy Dec 21.2025</h3>
                 <a href="https://www.eporner.com/video-tMLzVUtOVvU/ddc-private-orgy-ep3/" target="_blank">Watch Video</a>
-                <a href="../galleries/orgyPit_ep1.html">View Gallery</a>
+                <a href="../galleries/orgyPit_ep1.html" target="_blank">View Gallery</a>
             </div>
             
         </div>
@@ -71,6 +71,24 @@
   
 
 <script src="../script.js"></script>
+<div id="lightbox">
+        <img id="lightbox-img">
+    </div>
 
+    <script>
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImg = document.getElementById("lightbox-img");
+
+        document.querySelectorAll(".preview-images img").forEach(img => {
+        img.addEventListener("click", () => {
+            lightbox.style.display = "flex";
+            lightboxImg.src = img.dataset.full || img.src;
+        });
+        });
+
+        lightbox.addEventListener("click", () => {
+        lightbox.style.display = "none";
+        });
+    </script>
 </body>
 </html>

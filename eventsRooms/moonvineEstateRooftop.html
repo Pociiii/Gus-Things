@@ -65,7 +65,7 @@
                 <!--
                 <a href="https://www.eporner.com/video-tMLzVUtOVvU/ddc-private-orgy-ep3/" target="_blank">Watch Video</a>
                 -->
-                <a href="https://imgbox.com/g/FDu1QBDdDl">View Gallery</a>
+                <a href="https://imgbox.com/g/FDu1QBDdDl" target="_blank">View Gallery</a>
             </div>
             
         </div>
@@ -73,6 +73,24 @@
     </section>
 
 <script src="../script.js"></script>
+<div id="lightbox">
+        <img id="lightbox-img">
+    </div>
 
+    <script>
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImg = document.getElementById("lightbox-img");
+
+        document.querySelectorAll(".preview-images img").forEach(img => {
+        img.addEventListener("click", () => {
+            lightbox.style.display = "flex";
+            lightboxImg.src = img.dataset.full || img.src;
+        });
+        });
+
+        lightbox.addEventListener("click", () => {
+        lightbox.style.display = "none";
+        });
+    </script>
 </body>
 </html>

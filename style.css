@@ -106,7 +106,7 @@ main {
 }
 
 
-/* TAble */
+/* TABLE */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -155,10 +155,12 @@ li {
 /* LINKS */
 a {
   color: var(--accent-soft);
+  font-weight: bold;
 }
 
 a:hover {
   color: var(--accent);
+  font-weight: bold;
 }
 
 /* NAVBAR */
@@ -199,26 +201,23 @@ a:hover {
 .nav-links a {
   text-decoration: none;
   color: white;
-  font-weight: bold;
 }
 
 .nav-links a:hover {
   color: var(--accent);
 }
 
-.nav-right {
-  
+.nav-right { 
   justify-self: end; 
   display: flex;
   align-items: center;
- 
 }
 
 .nav-right img {
   height: 36px;
 }
 
-/* Dropdown */
+/* DROPDOWN */
 .dropdown-menu {
   display: none;
   position: absolute;
@@ -253,6 +252,14 @@ a:hover {
   max-width: 200px;
   border-radius: 6px;
   border: 1px solid #ff00ff;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.preview-images img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 18px rgba(255, 0, 200, 0.6);
+   border-color: #ff4ddb;
 }
 
 #lightbox {
