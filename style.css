@@ -251,7 +251,7 @@ a:hover {
   align-items: center;
   gap: 10px;
   color: #ff00ff;
-  font-size: 20px;
+  font-size: 15px;
   font-weight: bold;
   text-shadow: 0 0 10px #ff00ff;
 }
@@ -303,6 +303,7 @@ a:hover {
 .nav-links a:hover::after {
   width: 100%;
 }
+
 .nav-right { 
   justify-self: end; 
   display: flex;
