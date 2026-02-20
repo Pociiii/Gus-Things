@@ -212,10 +212,22 @@
 
     <!-- System -->
     <div class="panel reset-panel">
-        <h2>System</h2>
+    <h2>System</h2>
 
-        <button onclick="resetGame()">Start Over</button>
-        <p class="small-note">This will wipe all progress.</p>
+    <p class="system-info">
+    Your progress is automatically saved every few seconds.
+    The game stores data locally in your browser.
+    </p>
+
+    <p class="system-info">
+    Refreshing the page will NOT reset your progress.
+    Clearing browser data will.
+    </p>
+
+    <hr>
+
+    <button class="reset-btn" onclick="resetGame()">Start Over</button>
+    <p class="small-note">This will permanently wipe all progress.</p>
     </div>
 
     
