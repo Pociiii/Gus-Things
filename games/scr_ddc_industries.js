@@ -11,7 +11,7 @@ let productionTimer = 0;
 let inventory = 0;
 let itemsSold = 0;
 
-let baseDemand = 25;
+let baseDemand = 30;
 
 let saleTimer = 0;
 let baseSaleInterval = 3;

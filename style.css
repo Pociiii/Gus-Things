@@ -472,7 +472,8 @@ a:hover {
 }
 
 .panel p {
-  margin: 6px 0;
+  margin: 4px 0;
+  line-height: 1.3;
 }
 
 .panel button {
@@ -552,6 +553,33 @@ a:hover {
   margin-left: 8px;
   opacity: 0.8;
 }
+
+/* === Stat Rows Layout === */
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 4px 0;
+}
+
+/* Labels */
+.stat-label {
+  font-size: 13px;
+  opacity: 0.65;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* Numbers */
+.stat-value {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
+  text-shadow: 0 0 6px rgba(255, 0, 150, 0.4);
+}
+
+
 .explanation-panel p {
   font-size: 14px;
   opacity: 0.8;
@@ -561,8 +589,8 @@ a:hover {
 .explanation-panel strong {
   color: #ff00cc;
 }
-/* ===== PROGRESS BAR ===== */
 
+/* ===== PROGRESS BAR ===== */
 .progress-container {
   width: 100%;
   height: 10px;

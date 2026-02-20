@@ -75,103 +75,148 @@
 
     <!-- FACTORY -->
     <div class="panel">
-        <h2>Factory</h2>
+    <h2>Factory</h2>
 
-        <p><strong>XGold:</strong> <span id="credits">0</span></p>
-        <p><strong>Factory Tier:</strong> <span id="tier">1</span></p>
-        <p><strong>Production Time:</strong> <span id="prodTime">5</span>s</p>
+    <p class="stat-row">
+        <span class="stat-label">XGold</span>
+        <span class="stat-value" id="credits">0</span>
+    </p>
 
-        <!-- Progress Bar -->
-        <div class="progress-container">
+    <p class="stat-row">
+        <span class="stat-label">Factory Tier</span>
+        <span class="stat-value" id="tier">1</span>
+    </p>
+
+    <p class="stat-row">
+        <span class="stat-label">Production Time</span>
+        <span class="stat-value">
+        <span id="prodTime">5</span>s
+        </span>
+    </p>
+
+    <!-- Progress Bar -->
+    <div class="progress-container">
         <div class="progress-bar" id="progressBar"></div>
-        </div>
+    </div>
 
-        <button id="tierBtn" onclick="upgradeTier()"></button>
+    <button id="tierBtn" onclick="upgradeTier()"></button>
     </div>
 
 
-        <!-- UPGRADES -->
-        <div class="panel upgrades-panel">
-            <h2>Upgrades</h2>
+    <!-- UPGRADES -->
+    <div class="panel upgrades-panel">
+        <h2>Upgrades</h2>
 
-            <div class="upgrade-card">
-                <div class="upgrade-info">
-                <span class="upgrade-name">Speed</span>
-                <span class="upgrade-level">Lv <span id="speedLevel">0</span></span>
-                </div>
-                <button id="speedBtn" onclick="upgradeSpeed()"></button>
+        <div class="upgrade-card">
+            <div class="upgrade-info">
+            <span class="upgrade-name">Speed</span>
+            <span class="upgrade-level">Lv <span id="speedLevel">0</span></span>
             </div>
-
-            <div class="upgrade-card">
-                <div class="upgrade-info">
-                <span class="upgrade-name">Advertising</span>
-                <span class="upgrade-level">Lv <span id="advertisingLevel">0</span></span>
-                </div>
-            <button id="demandBtn" onclick="upgradeAdvertising()"></button>
-            </div>
-
-            <div class="upgrade-card">
-                <div class="upgrade-info">
-                    <span class="upgrade-name">Logistics</span>
-                    <span class="upgrade-level">Lv <span id="logisticsLevel">0</span></span>
-                </div>
-                <button id="logisticsBtn" onclick="upgradeLogistics()"></button>
-            </div>
+            <button id="speedBtn" onclick="upgradeSpeed()"></button>
         </div>
 
-
-        <!-- MARKETING -->
-        <div class="panel">
-            <h2>Market</h2>
-
-            <p><strong>Inventory:</strong> <span id="inventory">0</span></p>
-            <p><strong>Sold:</strong> <span id="itemsSold">0</span></p>
-            <p><strong>Demand:</strong> <span id="demandValue">0</span>%</p>
-            <p><strong>Sale Interval:</strong> <span id="saleIntervalValue">0</span>s</p>
-            <!-- Selling Progress Bar -->
-            <div class="progress-container">
-                <div class="progress-bar sale-bar" id="saleProgressBar"></div>
+        <div class="upgrade-card">
+            <div class="upgrade-info">
+            <span class="upgrade-name">Advertising</span>
+            <span class="upgrade-level">Lv <span id="advertisingLevel">0</span></span>
             </div>
-            <hr>
-
-            <p><strong>Production Cost:</strong> <span id="prodCost">0</span></p>
-            <p><strong>Sell Price:</strong> <span id="sellPrice">0</span></p>
-            <p><strong>Profit / Item:</strong> <span id="profitItem">0</span></p>
+        <button id="demandBtn" onclick="upgradeAdvertising()"></button>
         </div>
 
-        <!-- How -->
-         <div class="panel explanation-panel">
-            <h2>How It Works</h2>
-
-            <p>
-                The Factory produces devices over time.  
-                Each device costs XGold to produce.
-            </p>
-
-            <p>
-                The Market checks for sales every few seconds.
-                Each check has a chance to sell items based on Demand.
-            </p>
-
-            <p>
-                <strong>Speed</strong> → produces faster  
-                <br><strong>Advertising</strong> → increases demand  
-                <br><strong>Logistics</strong> → sells more often  
-                <br><strong>Factory Tier</strong> → increases item cost and value
-            </p>
-
-            <p>
-                Produce → Sell → Earn → Upgrade → Repeat.
-            </p>
+        <div class="upgrade-card">
+            <div class="upgrade-info">
+                <span class="upgrade-name">Logistics</span>
+                <span class="upgrade-level">Lv <span id="logisticsLevel">0</span></span>
             </div>
+            <button id="logisticsBtn" onclick="upgradeLogistics()"></button>
+        </div>
+    </div>
 
-            <!-- System -->
-            <div class="panel reset-panel">
-                <h2>System</h2>
 
-                <button onclick="resetGame()">Start Over</button>
-                <p class="small-note">This will wipe all progress.</p>
-            </div>
+    <!-- MARKET -->
+    <div class="panel">
+    <h2>Market</h2>
+
+    <p class="stat-row">
+        <span class="stat-label">Sex Devices Stored</span>
+        <span class="stat-value" id="inventory">0</span>
+    </p>
+
+    <p class="stat-row">
+        <span class="stat-label">Sex Devices Sold</span>
+        <span class="stat-value" id="itemsSold">0</span>
+    </p>
+
+    <p class="stat-row">
+        <span class="stat-label">Demand</span>
+        <span class="stat-value">
+        <span id="demandValue">0</span>%
+        </span>
+    </p>
+
+    <p class="stat-row">
+        <span class="stat-label">Sale Interval</span>
+        <span class="stat-value">
+        <span id="saleIntervalValue">0</span>s
+        </span>
+    </p>
+
+    <!-- Selling Progress Bar -->
+    <div class="progress-container">
+        <div class="progress-bar sale-bar" id="saleProgressBar"></div>
+    </div>
+
+    <hr>
+
+    <p class="stat-row">
+        <span class="stat-label">Production Cost</span>
+        <span class="stat-value" id="prodCost">0</span>
+    </p>
+
+    <p class="stat-row">
+        <span class="stat-label">Sell Price</span>
+        <span class="stat-value" id="sellPrice">0</span>
+    </p>
+
+    <p class="stat-row">
+        <span class="stat-label">Profit / Item</span>
+        <span class="stat-value" id="profitItem">0</span>
+    </p>
+    </div>
+
+    <!-- How -->
+        <div class="panel explanation-panel">
+        <h2>How It Works</h2>
+
+        <p>
+            The Factory produces devices over time.  
+            Each device costs XGold to produce.
+        </p>
+
+        <p>
+            The Market checks for sales every few seconds.
+            Each check has a chance to sell items based on Demand.
+        </p>
+
+        <p>
+            <strong>Speed</strong> → produces faster  
+            <br><strong>Advertising</strong> → increases demand  
+            <br><strong>Logistics</strong> → sells more often  
+            <br><strong>Factory Tier</strong> → increases item cost and value
+        </p>
+
+        <p>
+            Produce → Sell → Earn → Upgrade → Repeat.
+        </p>
+    </div>
+
+    <!-- System -->
+    <div class="panel reset-panel">
+        <h2>System</h2>
+
+        <button onclick="resetGame()">Start Over</button>
+        <p class="small-note">This will wipe all progress.</p>
+    </div>
 
     
 
