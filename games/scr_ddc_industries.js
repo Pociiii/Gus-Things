@@ -1,6 +1,6 @@
 // ===== CORE STATE =====
 
-let credits = 200;
+let credits = 500;
 let tier = 1;
 
 let speedLevel = 0;
@@ -282,7 +282,7 @@ function loadGame() {
 
   const data = JSON.parse(saved);
 
-  credits = data.credits ?? 200;
+  credits = data.credits ?? 500;
   tier = data.tier ?? 1;
   speedLevel = data.speedLevel ?? 0;
   inventory = data.inventory ?? 0;
@@ -296,7 +296,7 @@ function resetGame() {
 
   localStorage.removeItem("ddcIndustriesSave");
 
-  credits = 200;
+  credits = 500;
   tier = 1;
   speedLevel = 0;
   advertisingLevel = 0;
