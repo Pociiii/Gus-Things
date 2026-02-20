@@ -22,15 +22,15 @@ let logisticsLevel = 0;
 // ===== SIMPLE ECONOMY =====
 
 function getProductionTime() {
-  return baseProductionTime * Math.pow(0.92, speedLevel);
+  return baseProductionTime * Math.pow(0.96, speedLevel);
 }
 
 function getProductionCost() {
-  return 8 * Math.pow(1.8, tier);
+  return 8 * Math.pow(1.55, tier);
 }
 
 function getSellPrice() {
-  return getProductionCost() * 1.6;
+  return getProductionCost() * 1.35;
 }
 
 function getSellChance() {
@@ -38,7 +38,7 @@ function getSellChance() {
 }
 
 function getSpeedCost() {
-  return 50 * Math.pow(1.7, speedLevel);
+  return 50 * Math.pow(1.85, speedLevel);
 }
 
 function getTierCost() {
@@ -46,15 +46,15 @@ function getTierCost() {
 }
 
 function getDemand() {
-  return baseDemand * Math.pow(1.06, advertisingLevel);
+  return baseDemand * Math.pow(1.035, advertisingLevel);
 }
 
 function getLogisticsCost() {
-  return 400 * Math.pow(1.7, logisticsLevel);
+  return 400 * Math.pow(1.9, logisticsLevel);
 }
 
 function getSaleInterval() {
-  return baseSaleInterval * Math.pow(0.93, logisticsLevel);
+  return baseSaleInterval * Math.pow(0.99, logisticsLevel);
 }
 
 // ===== GAME LOOP =====
