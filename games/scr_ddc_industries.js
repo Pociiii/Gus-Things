@@ -62,7 +62,7 @@ function getGuaranteedOutput() {
 }
 
 function getBonusOutputChance() {
-  return tier * 1; // percent
+  return tier * 2; // percent
 }
 
 
