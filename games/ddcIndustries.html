@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gus Side Activities</title>
+<link rel="stylesheet" href="../style.css">
+<link rel="icon" type="image/png" href="../Images/ADP_LogoT.png">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+  <nav class="navbar">
+        <div class="logo">
+            <a href="https://discord.gg/vmM9fVwe9V " target="_blank">
+                <img src="../Images/ADP_LogoT.png" alt="ADP Logo">
+            </a>
+           
+            <a href="../index.html">Gus's Side Activities</a>
+        </div>
+
+        <ul class="nav-links">
+            <li class="dropdown">
+                <a href="#">Events Rooms ▾</a>
+                <ul class="dropdown-menu">
+                    <li><a href="../eventsRooms/ddcOrgyPit.html">DDC Orgy Pit</a></li>
+                    <li><a href="../eventsRooms/ddcWarehouse.html">DDC Warehouse</a></li>
+                    <li><a href="../eventsRooms/purpleVault.html">Purple Vault</a></li>
+                    <li><a href="../eventsRooms/gusOrgyPit.html">Gus's Orgy Pit</a></li>
+                    <li><a href="../eventsRooms/moonvineEstateRooftop.html">Moonvine Estate Rooftop</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Games ▾</a>
+                <ul class="dropdown-menu">
+                <li><a href="../games/selfless.html">Selfless Dice Game</a></li>
+                <li><a href="../games/strip.html">Strip Game</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+            <a href="../games/ddcIndustries.html">DDC Industries</a>
+            </li>
+        </ul>
+        <div class="nav-right logo">
+                 <img src="../Images/DDC_Graffiti_1.png" alt="DDC Logo">
+        </div>
+    </nav>
+
+  <div class="wrapper">
+  
+    <header>
+        <h1>DDC Industries</h1>
+    </header>
+
+    <p class="game-intro">
+        Welcome to <strong>DDC Industries</strong> where pleasure meets production.
+        <br><br>
+        Design. Manufacture. Distribute.
+        <br>
+        From humble beginner toys to luxury indulgence devices,
+        your mission is simple:
+        <strong>keep the market satisfied and the club craving more.</strong>
+        <br><br>
+        Boost demand, improve quality, and build an empire of irresistible temptation.
+    </p>
+<main class="game-grid">
+
+  <!-- FACTORY -->
+  <div class="panel">
+    <h2>Factory</h2>
+
+    <p><strong>Credits:</strong> <span id="credits">0</span></p>
+    <p><strong>Tier:</strong> <span id="tier">1</span></p>
+    <p><strong>Production Time:</strong> <span id="prodTime">5</span>s</p>
+    <p><strong>Quality Multiplier:</strong> x<span id="quality">1.0</span></p>
+
+    <!-- Progress Bar -->
+    <div class="progress-container">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <button onclick="upgradeTier()">Upgrade Tier</button>
+  </div>
+
+
+  <!-- UPGRADES -->
+  <div class="panel">
+    <h2>Upgrades</h2>
+
+    <p>Speed Level: <span id="speedLevel">0</span></p>
+    <button onclick="upgradeSpeed()">Upgrade Speed</button>
+
+    <p>Quality Level: <span id="qualityLevel">0</span></p>
+    <button onclick="upgradeQuality()">Upgrade Quality</button>
+  </div>
+
+
+    <!-- MARKETING -->
+    <div class="panel">
+        <h2>Marketing</h2>
+        <p><strong>Sex Devices Cost:</strong> <span id="prodCost">0</span></p>
+        <p><strong>Sex Devices Value:</strong> <span id="itemValue">0</span></p>
+        <p><strong>Profit / Item:</strong> <span id="profitItem">0</span></p>
+        <p><strong>Inventory:</strong> <span id="inventory">0</span></p>
+
+        <p><strong>Sex Devices Sold:</strong> <span id="itemsSold">0</span></p>
+        <p><strong>Demand:</strong> <span id="demand">50</span>%</p>
+        
+     
+
+        <button onclick="boostDemand()">Boost Marketing</button>
+    </div>
+
+</main>
+
+</div>
+
+<script src="../script.js"></script>
+
+</body>
+</html>

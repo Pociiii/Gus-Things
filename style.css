@@ -63,6 +63,7 @@ body::before {
 header {
   text-align: center;
   margin-bottom: 20px;
+  padding-top: 20px;
 }
 
 header p {
@@ -194,8 +195,6 @@ th, td {
   text-align: center;
 }
 
-
-
 tr:nth-child(even) {
   background: rgba(255,255,255,0.04);
 }
@@ -243,7 +242,8 @@ a:hover {
   padding: 12px 24px;
   border-bottom: 1px solid var(--border-soft);
   box-shadow: 0 0 12px rgba(255,0,255,0.4);
-
+  position: relative;
+  z-index: 1000;
 }
 
 .logo {
@@ -317,12 +317,13 @@ a:hover {
 .dropdown-menu {
   display: none;
   position: absolute;
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 1);
   padding: 10px 0;
   border: 1px solid var(--border-soft);
   box-shadow: 0 0 10px rgba(255,0,255,0.5);
   transition: opacity 0.2s ease;
   opacity: 0;
+  z-index: 9999;
 }
 
 .dropdown-menu li {
@@ -337,6 +338,8 @@ a:hover {
 .dropdown:hover .dropdown-menu {
   display: block;
   opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
 }
 
 /* PREVIEW IMAGES */
@@ -438,6 +441,56 @@ a:hover {
 
 .archive-item a:hover {
   color: #ff00ff;
+}
+
+/* DDC INDUSTRIES */
+.game-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.panel p {
+  margin: 6px 0;
+}
+
+.panel button {
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.game-intro {
+  text-align: center;
+  max-width: 600px;
+  margin: 10px auto 30px;
+  color: var(--text-secondary);
+  font-size: 16px;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.game-intro strong {
+  color: var(--accent-soft);
+}
+
+/* ===== PROGRESS BAR ===== */
+
+.progress-container {
+  width: 100%;
+  height: 10px;
+  background: rgba(255, 0, 255, 0.1);
+  border-radius: 6px;
+  margin: 12px 0 18px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #ff00cc, #ff4ddb);
+  box-shadow: 0 0 8px #ff00cc;
+  transition: width 0.1s linear;
 }
 
 /* Mobile */
