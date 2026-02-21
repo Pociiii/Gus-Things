@@ -60,7 +60,7 @@
     <header>
         <h1>
             DDC Industries
-            <p class="small-note">Version 1.0</p>
+            <p class="small-note">Version 0.9 (Beta)</p>
         </h1>
          
     </header>
@@ -81,68 +81,90 @@
         <span class="stat-label">XGold</span>
         <span class="stat-value" id="credits">0</span>
     </p>
-
     <p class="stat-row">
-        <span class="stat-label">Factory Tier</span>
-        <span class="stat-value" id="tier">1</span>
+        <span class="stat-label">Sex Devices Stored</span>
+        <span class="stat-value" id="inventory">0</span>
     </p>
+    
+<p class="stat-row">
+  <span class="stat-label">Cost Reduction</span>
 
-    <p class="stat-row">
-        <span class="stat-label">Production Time</span>
-        <span class="stat-value">
-        <span id="prodTime">5</span>s
-        </span>
-    </p>
+  <span class="stat-inline">
+    <span class="stat-value" id="efficiencyValue">0%</span>
+    <button class="mini-btn" id="efficiencyBtn"
+      onclick="upgradeEfficiency()">+</button>
+  </span>
+</p>
+    
+<p class="stat-row">
+  <span class="stat-label">Production Time</span>
 
-    <p class="stat-row">
-        <span class="stat-label">Output</span>
-        <span class="stat-value" id="outputValue">1</span>
-    </p>
+  <span class="stat-inline">
+    <span class="stat-value">
+      <span id="prodTime">5</span>s
+    </span>
+    <button class="mini-btn" id="speedBtn"
+      onclick="upgradeSpeed()">+</button>
+  </span>
+</p>
     <!-- Progress Bar -->
     <div class="progress-container">
         <div class="progress-bar" id="progressBar"></div>
     </div>
 
-    <button id="tierBtn" onclick="upgradeTier()"></button>
+    <p class="stat-row">
+        <span class="stat-label">Output / Cycle</span>
+        <span class="stat-value" id="outputValue">1</span>
+    </p>
+
     </div>
 
     <!-- MARKET -->
     <div class="panel">
     <h2>Market</h2>
 
-    <p class="stat-row">
-        <span class="stat-label">Sex Devices Stored</span>
-        <span class="stat-value" id="inventory">0</span>
-    </p>
+    
 
     <p class="stat-row">
         <span class="stat-label">Sex Devices Sold</span>
         <span class="stat-value" id="itemsSold">0</span>
     </p>
 
-    <p class="stat-row">
-        <span class="stat-label">Demand</span>
-        <span class="stat-value">
-        <span id="demandValue">0</span>%
-        </span>
-    </p>
+<p class="stat-row">
+  <span class="stat-label">Market Demand</span>
 
-    <p class="stat-row">
-        <span class="stat-label">Sale Interval</span>
-        <span class="stat-value">
-        <span id="saleIntervalValue">0</span>s
-        </span>
-    </p>
+  <span class="stat-inline">
+    <span class="stat-value">
+      <span id="demandValue">0</span>%
+    </span>
+    <button class="mini-btn" id="demandBtn"
+      onclick="upgradeAdvertising()">+</button>
+  </span>
+</p>
 
-    <p class="stat-row">
-    <span class="stat-label">Sale Capacity</span>
-    <span class="stat-value" id="saleCapacity">1</span>
-    </p>
+<p class="stat-row">
+  <span class="stat-label">Sale Check</span>
+
+  <span class="stat-inline">
+    <span class="stat-value">
+      <span id="saleIntervalValue">0</span>s
+    </span>
+    <button class="mini-btn" id="logisticsBtn"
+      onclick="upgradeLogistics()">+</button>
+  </span>
+</p>
+
+    
 
     <!-- Selling Progress Bar -->
     <div class="progress-container">
         <div class="progress-bar sale-bar" id="saleProgressBar"></div>
     </div>
+
+    <p class="stat-row">
+        <span class="stat-label">Sales Capacity</span>
+        <span class="stat-value" id="saleCapacity">1</span>
+    </p>
 
     <hr>
 
@@ -161,70 +183,7 @@
         <span class="stat-value" id="profitItem">0</span>
     </p>
     </div>
-    <!-- UPGRADES -->
-    <div class="panel upgrades-panel">
-        <h2>Upgrades</h2>
-
-        <div class="upgrade-card">
-            <div class="upgrade-info">
-            <span class="upgrade-name">Speed</span>
-            <span class="upgrade-level">Lv <span id="speedLevel">0</span></span>
-            </div>
-            <button id="speedBtn" onclick="upgradeSpeed()"></button>
-        </div>
-
-        <div class="upgrade-card">
-            <div class="upgrade-info">
-            <span class="upgrade-name">Advertising</span>
-            <span class="upgrade-level">Lv <span id="advertisingLevel">0</span></span>
-            </div>
-        <button id="demandBtn" onclick="upgradeAdvertising()"></button>
-        </div>
-
-        <div class="upgrade-card">
-            <div class="upgrade-info">
-                <span class="upgrade-name">Logistics</span>
-                <span class="upgrade-level">Lv <span id="logisticsLevel">0</span></span>
-            </div>
-            <button id="logisticsBtn" onclick="upgradeLogistics()"></button>
-        </div>
-    </div>
-
-
-    
-
-    <!-- How -->
-        <div class="panel explanation-panel">
-        <h2>How It Works</h2>
-
-        <p>
-            The Factory produces Sex Devices over time.  
-            Each Sex Device costs XGold to produce.
-        </p>
-
-        <p>
-            The Market checks for sales every few seconds.
-            Each check has a chance to sell items based on Demand.
-        </p>
-
-        <p>
-            <strong>Speed</strong> → increases production speed, and chance for extra Device output.
-            <br><strong>Factory Tier</strong> → increases item cost, item value and chance for extra Device output.
-            <br><strong>Advertising</strong> → increases demand and sale capacity, slightly increases extra sale chance and increases sell price.
-            <br><strong>Logistics</strong> → sells more often  
-            
-        </p>
-
-        <p>
-           Produce → Sell → Earn → Upgrade → Expand → Repeat.
-        </p>
-        <p>
-        <strong>Rebranding (Prestige)</strong> lets you reset your empire in exchange for
-        <strong>Influence</strong>, a permanent bonus that speeds up future production.
-        The more devices you sell in a run, the more Influence you gain.
-</p>
-    </div>
-    <!-- PRESTIGE -->
+    <!-- PRESTIGE/SYSTEM -->
     <div class="panel">
         <h2>Prestige</h2>
 
@@ -239,27 +198,57 @@
         </p>
 
         <button onclick="prestigeReset()">Rebrand Empire</button>
+
+        <h2>System</h2>
+
+        <p class="system-info">
+        Your progress is automatically saved every few seconds.
+        The game stores data locally in your browser.
+        </p>
+
+        <p class="system-info">
+        Refreshing the page will NOT reset your progress.
+        Clearing browser data will.
+        </p>
+
+        <hr>
+
+        <button class="reset-btn" onclick="resetGame()">Start Over</button>
+        <p class="small-note">This will permanently wipe ALL progress, including Influence</p>
+
     </div>
-    <!-- System -->
-    <div class="panel reset-panel">
-    <h2>System</h2>
 
-    <p class="system-info">
-    Your progress is automatically saved every few seconds.
-    The game stores data locally in your browser.
-    </p>
 
-    <p class="system-info">
-    Refreshing the page will NOT reset your progress.
-    Clearing browser data will.
-    </p>
+    <!-- HOW IT WORKS -->
+    <div class="panel explanation-panel">
+        <h2>How It Works</h2>
 
-    <hr>
+        <p>
+        The <strong>Factory</strong> produces Sex Devices automatically over time.
+        Each production cycle consumes <strong>XGold</strong> to manufacture Sex Devices.
+        </p>
 
-    <button class="reset-btn" onclick="resetGame()">Start Over</button>
-    <p class="small-note">This will permanently wipe all progress.</p>
+        <p>
+        The <strong>Market</strong> checks for sales at regular intervals.
+        Each check attempts to sell devices based on <strong>Market Demand</strong> and your current <strong>Sales Capacity</strong>.
+        </p>
+        <hr>
+        <p>
+        Use the <strong>+</strong> buttons next to stats to improve your operation:
+        <br><strong>Cost Reduction</strong> → lowers production cost
+        <br><strong>Production Time</strong> → produces devices faster
+        <br><strong>Market Demand</strong> → improves sale success and increases sales volume
+        <br><strong>Sale Check</strong> → processes sales more frequently
+        </p>
+
+        <hr>
+
+        <p>
+        <strong>Rebranding (Prestige)</strong> allows you to reset your operation in exchange for
+        <strong>Influence</strong>, a permanent bonus that speeds up future production.
+        The more devices you sell in a run, the more Influence you gain.
+        </p>
     </div>
-
     
 
     </main>

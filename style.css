@@ -15,21 +15,22 @@
 
   --border-soft: rgba(255, 0, 200, 0.35);
   --glow-soft: rgba(255, 0, 200, 0.25);
+
+  --radius: 12px;
+  --transition-fast: .2s ease;
+  --transition-smooth: .25s ease;
 }
 
 html, body {
   min-height: 100%;
+  margin: 0;
 }
 
 body {
   display: flex;
   flex-direction: column;
-  margin: 0;
   font-family: 'Inter', sans-serif;
-  font-weight: 400;
-  letter-spacing: 0.3px;
   -webkit-font-smoothing: antialiased;
-  background: var(--bg-main);
   color: var(--text-main);
   line-height: 1.6;
   font-size: 16px;
@@ -39,7 +40,6 @@ body {
     #050005 60%,
     #000000 100%
   );
-  font-family: 'Inter', sans-serif;
 }
 
 body::before {
@@ -70,6 +70,8 @@ header p {
   color: var(--text-secondary);
   font-size: 18px;
   opacity: 0.9;
+  font-weight: 300;
+  letter-spacing: 1px;
 }
 
 h1 {
@@ -78,9 +80,6 @@ h1 {
   letter-spacing: 3px;
   font-family: 'Orbitron', sans-serif;
   font-weight: 700;
-  font-size: 42px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
 }
 
 h2 {
@@ -97,7 +96,7 @@ h1, h2, .logo {
 
 p {
   color: var(--text-secondary);
-  font-size: 17px;
+  font-size: 16px;
   line-height: 1.7;
 }
 
@@ -113,30 +112,27 @@ li {
   font-size: 15px;
 }
 
+/* BUTTONS */
 button {
   background: #5f017c;
   color: white;
   border: none;
-  padding: 14px 28px;
-  font-size: 15px;
+  padding: 12px 24px;
+  font-size: 14px;
   cursor: pointer;
   border-radius: 6px;
-  margin-top: 10px;
-  box-shadow: 0 0 15px #c300ff;
+  box-shadow: 0 0 12px rgba(255,0,255,0.6);
   font-family: 'Orbitron', sans-serif;
   letter-spacing: 1.5px;
   text-transform: uppercase;
+  transition: background var(--transition-fast),
+              box-shadow var(--transition-fast),
+              transform var(--transition-fast);
 }
 
 button:hover {
   background: #e000ff;
-}
-
-#result {
-  margin-top: 12px;
-  font-size: 18px;
-  color: #ffffff;
-  text-shadow: 0 0 8px rgba(255,0,255,0.5);
+  transform: translateY(-1px);
 }
 
 main {
@@ -167,21 +163,18 @@ main {
   text-align: center;
 }
 
-header p {
-  font-size: 18px;
-  font-weight: 300;
-  letter-spacing: 1px;
-}
 /* PANELS */
 .panel {
   background: var(--panel-glass);
   backdrop-filter: blur(6px);
   border: 1px solid var(--border-soft);
-  border-radius: 12px;
+  border-radius: var(--radius);
   padding: 24px;
   box-shadow:
     0 0 20px var(--glow-soft),
     inset 0 0 15px rgba(255,0,255,0.05);
+  transition: transform var(--transition-smooth),
+              box-shadow var(--transition-smooth);
 }
 
 .panel h2 {
@@ -263,6 +256,8 @@ a:hover {
   box-shadow: 0 0 12px rgba(255,0,255,0.4);
   position: relative;
   z-index: 1000;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .logo {
@@ -381,11 +376,9 @@ a:hover {
 }
 
 .preview-images img:hover {
-  transform: scale(1.05);
   box-shadow: 0 0 18px rgba(255, 0, 200, 0.6);
   border-color: #ff4ddb;
   transform: scale(1.08);
-  filter: brightness(1.1);
   opacity: 1;
 }
 
@@ -463,6 +456,12 @@ a:hover {
   color: #ff00ff;
 }
 
+.panel,
+.archive-item,
+button,
+.preview-images img {
+  will-change: transform;
+}
 /* DDC INDUSTRIES */
 .game-grid {
   display: grid;
@@ -495,63 +494,29 @@ a:hover {
   color: var(--accent-soft);
 }
 
-.upgrades-panel {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  min-width: 280px;
-}
 
-.upgrade-card {
+/* inline stat + button */
+.stat-inline {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 10px 14px;
-  border-radius: 10px;
-  background: rgba(255, 0, 150, 0.05);
-  border: 1px solid rgba(255, 0, 150, 0.2);
+  gap: 8px;
 }
 
-.upgrade-info {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.upgrade-name {
-  font-weight: 600;
+/* small upgrade button */
+.mini-btn {
+  padding: 0 10px;
   font-size: 14px;
+  border-radius: 6px;
+  min-width: 32px;
+  height: 24px;
+  line-height: 24px;
+  background: rgba(255, 0, 200, 0.15);
+  box-shadow: 0 0 6px rgba(255, 0, 200, 0.4);
 }
 
-.upgrade-level {
-  font-size: 12px;
-  opacity: 0.7;
-}
-
-.upgrades-panel button {
-  padding: 6px 14px;
-  font-size: 12px;
-  min-width: 110px;
-  border-radius: 20px;
-}
-
-.upgrades-panel .upgrade-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 12px;
-}
-
-.upgrades-panel button {
-  padding: 6px 12px;
-  font-size: 13px;
-  width: auto;
-  min-width: 140px;
-}
-
-.upgrades-panel span {
-  margin-left: 8px;
-  opacity: 0.8;
+.mini-btn:hover {
+  background: #ff00cc;
+  box-shadow: 0 0 10px #ff00cc;
 }
 
 /* ===== DISABLED BUTTON STATE ===== */
@@ -603,7 +568,7 @@ button:disabled:hover {
 /* Labels */
 .stat-label {
   font-size: 13px;
-  opacity: 0.65;
+  opacity: 0.60;
   letter-spacing: 0.5px;
   text-transform: uppercase;
 }

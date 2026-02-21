@@ -1,9 +1,9 @@
 // ===== CORE STATE =====
 
 let credits = 1000;
-let tier = 1;
 
 let speedLevel = 0;
+let efficiencyLevel = 0;
 
 let baseProductionTime = 7;
 let productionTimer = 0;
@@ -30,7 +30,8 @@ function getProductionTime() {
 }
 
 function getProductionCost() {
-  return 8 * Math.pow(1.55, tier);
+  let base = 8 * Math.pow(1.12, speedLevel + influence);
+  return base * Math.pow(0.98, efficiencyLevel);
 }
 
 function getSellPrice() {
@@ -45,8 +46,8 @@ function getSpeedCost() {
   return 50 * Math.pow(1.85, speedLevel);
 }
 
-function getTierCost() {
-  return getProductionCost() * 7;
+function getEfficiencyCost() {
+  return 120 * Math.pow(1.7, efficiencyLevel);
 }
 
 function getDemand() {
@@ -64,11 +65,11 @@ function getSaleInterval() {
 }
 
 function getGuaranteedOutput() {
-  return 1 + Math.floor(tier / 10);
+  return 1 + Math.floor(speedLevel / 12);
 }
 
 function getBonusOutputChance() {
-  return tier * 0.5 + speedLevel * 0.4;
+  return speedLevel * 0.5;
 }
 
 function getGuaranteedSales() {
@@ -189,17 +190,17 @@ function upgradeSpeed() {
   }
 }
 
-function upgradeTier() {
-  let cost = getTierCost();
+function upgradeEfficiency() {
+  let cost = getEfficiencyCost();
+
   if (credits < cost) {
     document.body.classList.add("shake");
-    setTimeout(()=>document.body.classList.remove("shake"), 200);
+    setTimeout(() => document.body.classList.remove("shake"), 200);
     return;
   }
-  if (credits >= cost) {
-    credits -= cost;
-    tier++;
-  }
+
+  credits -= cost;
+  efficiencyLevel++;
 }
 
 function upgradeAdvertising() {
@@ -215,8 +216,6 @@ function upgradeAdvertising() {
   }
 }
 
-
-
 function upgradeLogistics() {
   let cost = getLogisticsCost();
   if (credits >= cost) {
@@ -228,66 +227,51 @@ function upgradeLogistics() {
 // ===== UI =====
 
 function updateUI() {
-  document.getElementById("credits").innerText = formatNumber(credits);
-  document.getElementById("tier").innerText = tier;
-  document.getElementById("inventory").innerText = formatNumber(inventory);
-  document.getElementById("itemsSold").innerText = formatNumber(itemsSold);
-  document.getElementById("demandValue").innerText =
-  formatNumber(getDemand());
-
+  document.getElementById("credits").innerText = 
+    formatNumber(credits);
+  document.getElementById("inventory").innerText = 
+    formatNumber(inventory);
+  document.getElementById("itemsSold").innerText = 
+    formatNumber(itemsSold);
+  document.getElementById("demandValue").innerText = 
+    formatNumber(getDemand());
   document.getElementById("prodCost").innerText =
     formatNumber(getProductionCost());
-
   document.getElementById("sellPrice").innerText =
     formatNumber(getSellPrice());
-
   document.getElementById("profitItem").innerText =
     formatNumber(getSellPrice() - getProductionCost());
-
   document.getElementById("prodTime").innerText =
     getProductionTime().toFixed(2);
 
-  document.getElementById("speedLevel").innerText = speedLevel;
-  document.getElementById("advertisingLevel").innerText = advertisingLevel;
+  let reduction = 1 - Math.pow(0.98, efficiencyLevel);
+  document.getElementById("efficiencyValue").innerText =   
+  (reduction * 100).toFixed(1) + "%";
 
-  document.getElementById("speedBtn").innerText =
-    formatNumber(getSpeedCost());
-
-  document.getElementById("tierBtn").innerText =
-    "Upgrade Tier (" + formatNumber(getTierCost()) + ")";
-
-  document.getElementById("demandBtn").innerText =
-    formatNumber(getAdvertisingCost());
-
-  document.getElementById("speedBtn").disabled =
-    credits < getSpeedCost();
-
-  document.getElementById("tierBtn").disabled =
-    credits < getTierCost();
-
-  document.getElementById("demandBtn").disabled =
-    credits < getAdvertisingCost();
-
-    document.getElementById("logisticsLevel").innerText = logisticsLevel;
-
-  document.getElementById("logisticsBtn").innerText =
-  formatNumber(getLogisticsCost());
-
-  document.getElementById("logisticsBtn").disabled =
-  credits < getLogisticsCost();
-
-  document.getElementById("saleIntervalValue").innerText =
-  getSaleInterval().toFixed(2);
-
-  document.getElementById("outputValue").innerText =
-  getGuaranteedOutput() + " + " + getBonusOutputChance() + "%";
-
+  document.getElementById("saleIntervalValue").innerText = 
+    getSaleInterval().toFixed(2);
+  document.getElementById("outputValue").innerText = 
+  formatNumber(getGuaranteedOutput()) + " (+" + getBonusOutputChance().toFixed(1) + "%)";
   document.getElementById("influenceValue").innerText = influence;
   document.getElementById("prestigeGain").innerText = getPrestigeGain();
+  document.getElementById("saleCapacity").innerText = 
+  getGuaranteedSales() + " (+" + getBonusSaleChance().toFixed(1) + "%)";
+  const effBtn = document.getElementById("efficiencyBtn");
+  const spdBtn = document.getElementById("speedBtn");
+  const demBtn = document.getElementById("demandBtn");
+  const logBtn = document.getElementById("logisticsBtn");
 
-  document.getElementById("saleCapacity").innerText =
-  getGuaranteedSales() + " + " +
-  getBonusSaleChance().toFixed(1) + "%";
+  if (effBtn)
+    effBtn.title = "Upgrade (" + formatNumber(getEfficiencyCost()) + ")";
+
+  if (spdBtn)
+    spdBtn.title = "Upgrade (" + formatNumber(getSpeedCost()) + ")";
+
+  if (demBtn)
+    demBtn.title = "Upgrade (" + formatNumber(getAdvertisingCost()) + ")";
+
+  if (logBtn)
+    logBtn.title = "Upgrade (" + formatNumber(getLogisticsCost()) + ")";
 
 }
 
@@ -310,7 +294,6 @@ function prestigeReset() {
 
   // reset progress
   credits = 1000;
-  tier = 1;
   speedLevel = 0;
   advertisingLevel = 0;
   logisticsLevel = 0;
@@ -345,8 +328,8 @@ function formatSmallNumber(num) {
 function saveGame() {
   const saveData = {
     credits,
-    tier,
     speedLevel,
+    efficiencyLevel,
     inventory,
     itemsSold,
     advertisingLevel,
@@ -365,8 +348,8 @@ function loadGame() {
   const data = JSON.parse(saved);
 
   credits = data.credits ?? 1000;
-  tier = data.tier ?? 1;
   speedLevel = data.speedLevel ?? 0;
+  efficiencyLevel = data.efficiencyLevel ?? 0;
   inventory = data.inventory ?? 0;
   itemsSold = data.itemsSold ?? 0;
   advertisingLevel = data.advertisingLevel ?? 0;
@@ -381,12 +364,13 @@ function resetGame() {
   localStorage.removeItem("ddcIndustriesSave");
 
   credits = 1000;
-  tier = 1;
   speedLevel = 0;
+  efficiencyLevel = 0;
   advertisingLevel = 0;
   inventory = 0;
   itemsSold = 0;
   logisticsLevel = 0;
-
+  influence = 0;
+  lifetimeSold = 0;
   saveGame();
 }
