@@ -642,6 +642,61 @@ button:disabled:hover {
   box-shadow: 0 0 6px #00ffcc;
 }
 
+@keyframes statFlash {
+  0%   { color: #fff; text-shadow: none; }
+  40%  { color: #ff00cc; text-shadow: 0 0 10px #ff00cc; }
+  100% { color: #fff; text-shadow: none; }
+}
+
+.stat-flash {
+  animation: statFlash 0.45s ease;
+}
+
+.float-credit {
+  position: absolute;
+  color: #ff00cc;
+  font-weight: bold;
+  pointer-events: none;
+  animation: floatUp 1.2s ease-out forwards;
+  white-space: nowrap;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-40px); opacity: 0; }
+}
+.milestone-popup {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0,0,0,0.75);
+  border: 1px solid #ff00cc;
+  padding: 14px 24px;
+  border-radius: 10px;
+  font-size: 18px;
+  color: #fff;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(255,0,200,0.6);
+  animation: fadeInOut 6s ease forwards;
+  z-index: 9999;
+}
+
+@keyframes fadeInOut {
+  0%   { opacity: 0; transform: translate(-50%, -60%); }
+  10%  { opacity: 1; transform: translate(-50%, -50%); }
+  80%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.market-mood {
+  text-align: center;
+  margin-bottom: 10px;
+  color: #ffb3ff;
+  font-style: italic;
+  letter-spacing: 0.5px;
+}
+
 /* Mobile */
 @media (max-width: 700px) {
   .game-grid {

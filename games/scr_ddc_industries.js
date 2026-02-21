@@ -22,6 +22,16 @@ let logisticsLevel = 0;
 let influence = 0;
 let lifetimeSold = 0;
 
+let milestoneIndex = 0;
+
+const milestones = [
+  { sold: 100, text: "Market recognition achieved." },
+  { sold: 500, text: "Demand surging across the club." },
+  { sold: 1000, text: "Regional dominance established." },
+  { sold: 5000, text: "Brand reputation skyrocketing." },
+  { sold: 10000, text: "Market domination achieved." }
+];
+
 // ===== SIMPLE ECONOMY =====
 
 function getProductionTime() {
@@ -160,10 +170,24 @@ function attemptSales() {
   }
 
   if (soldThisTick > 0) {
-    credits += soldThisTick * getSellPrice();
+    let earnings = soldThisTick * getSellPrice();
+
+    credits += earnings;
     itemsSold += soldThisTick;
     lifetimeSold += soldThisTick;
+
+    showFloatingCredits(earnings);
   }
+
+    if (
+      milestoneIndex < milestones.length &&
+      lifetimeSold >= milestones[milestoneIndex].sold
+    ) {
+      showMilestone(milestones[milestoneIndex].text);
+      milestoneIndex++;
+    }
+
+
 }
 
 let lastTime = Date.now();
@@ -201,6 +225,7 @@ function upgradeSpeed() {
   if (credits >= cost) {
     credits -= cost;
     speedLevel++;
+    flashStat("speedValue");
   }
   updateUI();
 }
@@ -216,6 +241,7 @@ function upgradeEfficiency() {
   if (credits >= cost) {
     credits -= cost;
     efficiencyLevel++;
+    flashStat("efficiencyValue");
   }
   updateUI();
 }
@@ -230,6 +256,7 @@ function upgradeAdvertising() {
   if (credits >= cost) {
     credits -= cost;
     advertisingLevel++;
+    flashStat("advertisingValue");
   }
   updateUI();
 }
@@ -244,9 +271,11 @@ function upgradeLogistics() {
   if (credits >= cost) {
     credits -= cost;
     logisticsLevel++;
+    flashStat("logisticsValue");
   }
   updateUI();
 }
+
 
 // ===== UI =====
 
@@ -282,8 +311,11 @@ function updateUI() {
   getGuaranteedSales() + " (+" + getBonusSaleChance().toFixed(1) + "%)";
 
   let profitItem = getSellPrice() - getProductionCost();
-  document.getElementById("profitItem").innerText =
-    formatNumber(profitItem);
+  document.getElementById("profitItem").innerText = formatNumber(profitItem);
+
+  let nextTarget = Math.pow((getPrestigeGain() + 1), 2) * 50;
+  document.getElementById("nextInfluence").innerText =
+  formatNumber(Math.max(0, nextTarget - lifetimeSold));
 
   const effBtn = document.getElementById("efficiencyBtn");
   const spdBtn = document.getElementById("speedBtn");
@@ -302,6 +334,7 @@ function updateUI() {
   if (logBtn)
     logBtn.title = "Upgrade (" + formatNumber(getLogisticsCost()) + ")";
 
+  updateMarketMood();
 }
 
 function updateSaleProgressBar(percent) {
@@ -402,4 +435,51 @@ function resetGame() {
   influence = 0;
   lifetimeSold = 0;
   saveGame();
+}
+
+function flashStat(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+
+  el.classList.remove("stat-flash");
+  void el.offsetWidth;
+  el.classList.add("stat-flash");
+}
+
+function showFloatingCredits(amount) {
+  const el = document.createElement("div");
+  el.className = "float-credit";
+  el.innerText = "+" + formatNumber(amount);
+
+  const marketPanel = document.querySelector(".panel:nth-child(2)");
+
+  marketPanel.style.position = "relative";
+  marketPanel.appendChild(el);
+
+  el.style.left = "-20%";
+  el.style.top = "20%";
+  el.style.transform = "translate(-50%, -50%)";
+
+  setTimeout(() => el.remove(), 1200);
+}
+
+function showMilestone(text) {
+  const el = document.createElement("div");
+  el.className = "milestone-popup";
+  el.innerText = text;
+
+  document.body.appendChild(el);
+
+  setTimeout(() => el.remove(), 6000);
+}
+
+function updateMarketMood() {
+  let mood = "Market stable.";
+
+  if (getDemand() > 80) mood = "Demand surging.";
+  else if (inventory === 0) mood = "Market hungry.";
+  else if (credits > 100000) mood = "Profits booming.";
+  else if (getSellChance() > 0.95) mood = "Customers can't get enough.";
+
+  document.getElementById("marketMood").innerText = mood;
 }

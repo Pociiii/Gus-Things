@@ -71,6 +71,7 @@
         <strong>keep the market satisfied and the club craving more.</strong>
         <hr>
     </p>
+    
     <main class="game-grid">
 
     <!-- FACTORY -->
@@ -122,7 +123,7 @@
     <!-- MARKET -->
     <div class="panel">
         <h2>Market</h2>
-
+        <p class="small-note" id="marketMood"></p>
         <p class="stat-row">
             <span class="stat-label">Sex Devices Sold</span>
             <span class="stat-value" id="itemsSold">0</span>
@@ -195,7 +196,9 @@
         <span class="stat-label">Gain on Reset</span>
         <span class="stat-value" id="prestigeGain">0</span>
         </p>
-
+        <p class="small-note">
+        Next Influence in <span id="nextInfluence">0</span> devices
+        </p>
         <button onclick="prestigeReset()">Rebrand Empire</button>
 
         <h2>System</h2>
