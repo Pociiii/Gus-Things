@@ -178,6 +178,11 @@ mainLoop();
 
 function upgradeSpeed() {
   let cost = getSpeedCost();
+  if (credits < cost) {
+    document.body.classList.add("shake");
+    setTimeout(()=>document.body.classList.remove("shake"), 200);
+    return;
+  }
   if (credits >= cost) {
     credits -= cost;
     speedLevel++;
@@ -186,6 +191,11 @@ function upgradeSpeed() {
 
 function upgradeTier() {
   let cost = getTierCost();
+  if (credits < cost) {
+    document.body.classList.add("shake");
+    setTimeout(()=>document.body.classList.remove("shake"), 200);
+    return;
+  }
   if (credits >= cost) {
     credits -= cost;
     tier++;
@@ -194,6 +204,11 @@ function upgradeTier() {
 
 function upgradeAdvertising() {
   let cost = getAdvertisingCost();
+  if (credits < cost) {
+    document.body.classList.add("shake");
+    setTimeout(()=>document.body.classList.remove("shake"), 200);
+    return;
+  }
   if (credits >= cost) {
     credits -= cost;
     advertisingLevel++;

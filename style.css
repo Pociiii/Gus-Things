@@ -554,6 +554,44 @@ a:hover {
   opacity: 0.8;
 }
 
+/* ===== DISABLED BUTTON STATE ===== */
+button:disabled {
+  background: #2a2a2a;
+  color: #777;
+  box-shadow: none;
+  cursor: not-allowed;
+  opacity: 0.6;
+  background: linear-gradient(180deg, #2a2a2a, #1a1a1a);
+}
+
+/* remove hover glow when disabled */
+button:disabled:hover {
+  background: #2a2a2a;
+  box-shadow: none;
+}
+
+@keyframes softPulse {
+  0% { box-shadow: 0 0 4px rgba(255,0,255,0.15); }
+  50% { box-shadow: 0 0 10px rgba(255,0,255,0.35); }
+  100% { box-shadow: 0 0 4px rgba(255,0,255,0.15); }
+}
+
+.button-almost {
+  animation: softPulse 1.5s infinite;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-3px); }
+  50% { transform: translateX(3px); }
+  75% { transform: translateX(-3px); }
+  100% { transform: translateX(0); }
+}
+
+.shake {
+  animation: shake 0.2s;
+}
+
 /* === Stat Rows Layout === */
 .stat-row {
   display: flex;
