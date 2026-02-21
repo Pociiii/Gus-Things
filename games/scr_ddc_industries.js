@@ -84,7 +84,7 @@ function getLogisticsCost() {
 }
 
 function getSaleInterval() {
-  return baseSaleInterval * Math.pow(0.99, logisticsLevel);
+  return baseSaleInterval * Math.pow(0.98, logisticsLevel);
 }
 
 function getGuaranteedOutput() {
