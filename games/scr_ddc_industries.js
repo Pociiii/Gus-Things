@@ -134,12 +134,16 @@ function gameLoop(delta) {
       inventory += produced;
 
     }
+    progressBar.classList.add("complete");
+    setTimeout(() => progressBar.classList.remove("complete"), 150);
   }
 
   saleTimer += delta;
 
   if (saleTimer >= getSaleInterval()) {
     attemptSales();
+    progressBar.classList.add("complete");
+    setTimeout(() => progressBar.classList.remove("complete"), 150);
     saleTimer = 0;
   }
 
@@ -483,3 +487,4 @@ function updateMarketMood() {
 
   document.getElementById("marketMood").innerText = mood;
 }
+

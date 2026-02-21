@@ -633,13 +633,43 @@ button:disabled:hover {
 .progress-bar {
   height: 100%;
   width: 0%;
-  background: linear-gradient(90deg, #ff00cc, #ff4ddb);
-  box-shadow: 0 0 8px #ff00cc;
-  transition: width 0.1s linear;
+  border-radius: 10px;
+  background: linear-gradient(
+    90deg,
+    #ff00cc,
+    #ff4dff,
+    #ff00cc
+  );
+  background-size: 200% 100%;
+  box-shadow:
+    0 0 10px rgba(255, 0, 200, 0.6),
+    0 0 20px rgba(255, 0, 200, 0.3);
+  transition: width 0.15s linear;
+  animation: neonFlow 2.5s linear infinite;
 }
+
 .sale-bar {
-  background: linear-gradient(90deg, #00c3ff, #00ffcc);
-  box-shadow: 0 0 6px #00ffcc;
+  background: linear-gradient(
+    90deg,
+    #ff00cc,
+    #ff66ff,
+    #ff00cc
+  );
+  background-size: 200% 100%;
+  box-shadow:
+    0 0 10px rgba(255,0,200,0.8),
+    0 0 20px rgba(255,0,200,0.35);
+  animation: neonFlow 2.8s linear infinite;
+}
+
+.progress-bar.complete {
+  box-shadow:
+    0 0 18px currentColor,
+    0 0 30px currentColor;
+}
+@keyframes neonFlow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
 }
 
 @keyframes statFlash {
