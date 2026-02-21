@@ -36,7 +36,7 @@ const milestones = [
 
 function getProductionTime() {
   return baseProductionTime *
-    Math.pow(0.96, speedLevel);
+    Math.pow(0.98, speedLevel);
 }
 
 function getBaseProductionValue() {
