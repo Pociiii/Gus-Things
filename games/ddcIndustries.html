@@ -121,68 +121,67 @@
 
     <!-- MARKET -->
     <div class="panel">
-    <h2>Market</h2>
+        <h2>Market</h2>
 
-    
+        <p class="stat-row">
+            <span class="stat-label">Sex Devices Sold</span>
+            <span class="stat-value" id="itemsSold">0</span>
+        </p>
 
-    <p class="stat-row">
-        <span class="stat-label">Sex Devices Sold</span>
-        <span class="stat-value" id="itemsSold">0</span>
-    </p>
+        <p class="stat-row">
+        <span class="stat-label">Market Demand</span>
 
-<p class="stat-row">
-  <span class="stat-label">Market Demand</span>
+        <span class="stat-inline">
+            <span class="stat-value">
+            <span id="demandValue">0</span>%
+            </span>
+            <button class="mini-btn" id="demandBtn"
+            onclick="upgradeAdvertising()">+</button>
+        </span>
+        </p>
 
-  <span class="stat-inline">
-    <span class="stat-value">
-      <span id="demandValue">0</span>%
-    </span>
-    <button class="mini-btn" id="demandBtn"
-      onclick="upgradeAdvertising()">+</button>
-  </span>
-</p>
+        <p class="stat-row">
+        <span class="stat-label">Sale Check</span>
 
-<p class="stat-row">
-  <span class="stat-label">Sale Check</span>
+        <span class="stat-inline">
+            <span class="stat-value">
+            <span id="saleIntervalValue">0</span>s
+            </span>
+            <button class="mini-btn" id="logisticsBtn"
+            onclick="upgradeLogistics()">+</button>
+        </span>
+        </p>
 
-  <span class="stat-inline">
-    <span class="stat-value">
-      <span id="saleIntervalValue">0</span>s
-    </span>
-    <button class="mini-btn" id="logisticsBtn"
-      onclick="upgradeLogistics()">+</button>
-  </span>
-</p>
+        
 
-    
+        <!-- Selling Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-bar sale-bar" id="saleProgressBar"></div>
+        </div>
 
-    <!-- Selling Progress Bar -->
-    <div class="progress-container">
-        <div class="progress-bar sale-bar" id="saleProgressBar"></div>
+        <p class="stat-row">
+            <span class="stat-label">Sales Capacity</span>
+            <span class="stat-value" id="saleCapacity">1</span>
+        </p>
+
+        <hr>
+
+        <p class="stat-row">
+            <span class="stat-label">Production Cost</span>
+            <span class="stat-value" id="prodCost">0</span>
+        </p>
+
+        <p class="stat-row">
+            <span class="stat-label">Sell Price</span>
+            <span class="stat-value" id="sellPrice">0</span>
+        </p>
+
+        <p class="stat-row">
+            <span class="stat-label">Profit / Sex Device</span>
+            <span class="stat-value" id="profitItem">0</span>
+        </p>
     </div>
 
-    <p class="stat-row">
-        <span class="stat-label">Sales Capacity</span>
-        <span class="stat-value" id="saleCapacity">1</span>
-    </p>
-
-    <hr>
-
-    <p class="stat-row">
-        <span class="stat-label">Production Cost</span>
-        <span class="stat-value" id="prodCost">0</span>
-    </p>
-
-    <p class="stat-row">
-        <span class="stat-label">Sell Price</span>
-        <span class="stat-value" id="sellPrice">0</span>
-    </p>
-
-    <p class="stat-row">
-        <span class="stat-label">Profit / Sex Device</span>
-        <span class="stat-value" id="profitItem">0</span>
-    </p>
-    </div>
     <!-- PRESTIGE/SYSTEM -->
     <div class="panel">
         <h2>Prestige</h2>

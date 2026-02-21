@@ -29,13 +29,22 @@ function getProductionTime() {
     Math.pow(0.96, speedLevel) * Math.pow(0.98, influence);
 }
 
+function getBaseProductionValue() {
+  return 50 * Math.pow(1.12, speedLevel + influence);
+}
+
 function getProductionCost() {
-  let base = 8 * Math.pow(1.12, speedLevel + influence);
-  return base * Math.pow(0.98, efficiencyLevel);
+  return Math.round(
+    getBaseProductionValue() *
+    Math.pow(0.995, efficiencyLevel)
+  );
 }
 
 function getSellPrice() {
-  return getProductionCost() * 1.55 * (1 + advertisingLevel * 0.002);
+  return Math.round(
+    getBaseProductionValue() * 1.55 *
+    (1 + advertisingLevel * 0.002)
+  );
 }
 
 function getSellChance() {
@@ -57,7 +66,7 @@ function getDemand() {
 }
 
 function getLogisticsCost() {
-  return 200 * Math.pow(1.4, logisticsLevel);
+  return 100 * Math.pow(1.4, logisticsLevel);
 }
 
 function getSaleInterval() {
@@ -188,6 +197,7 @@ function upgradeSpeed() {
     credits -= cost;
     speedLevel++;
   }
+  updateUI();
 }
 
 function upgradeEfficiency() {
@@ -198,9 +208,11 @@ function upgradeEfficiency() {
     setTimeout(() => document.body.classList.remove("shake"), 200);
     return;
   }
-
-  credits -= cost;
-  efficiencyLevel++;
+  if (credits >= cost) {
+    credits -= cost;
+    efficiencyLevel++;
+  }
+  updateUI();
 }
 
 function upgradeAdvertising() {
@@ -214,14 +226,21 @@ function upgradeAdvertising() {
     credits -= cost;
     advertisingLevel++;
   }
+  updateUI();
 }
 
 function upgradeLogistics() {
   let cost = getLogisticsCost();
+   if (credits < cost) {
+    document.body.classList.add("shake");
+    setTimeout(()=>document.body.classList.remove("shake"), 200);
+    return;
+  }
   if (credits >= cost) {
     credits -= cost;
     logisticsLevel++;
   }
+  updateUI();
 }
 
 // ===== UI =====
@@ -244,7 +263,7 @@ function updateUI() {
   document.getElementById("prodTime").innerText =
     getProductionTime().toFixed(2);
 
-  let reduction = 1 - Math.pow(0.98, efficiencyLevel);
+  let reduction = 1 - Math.pow(0.995, efficiencyLevel);
   document.getElementById("efficiencyValue").innerText =   
   (reduction * 100).toFixed(1) + "%";
 
@@ -256,6 +275,11 @@ function updateUI() {
   document.getElementById("prestigeGain").innerText = getPrestigeGain();
   document.getElementById("saleCapacity").innerText = 
   getGuaranteedSales() + " (+" + getBonusSaleChance().toFixed(1) + "%)";
+
+  let profitItem = getSellPrice() - getProductionCost();
+  document.getElementById("profitItem").innerText =
+    formatNumber(profitItem);
+
   const effBtn = document.getElementById("efficiencyBtn");
   const spdBtn = document.getElementById("speedBtn");
   const demBtn = document.getElementById("demandBtn");
