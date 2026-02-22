@@ -105,7 +105,7 @@ function getBonusSaleChance() {
 }
 
 function getAdvertisingCost() {
-  return 200 * Math.pow(1.55, advertisingLevel);
+  return 150 * Math.pow(1.55, advertisingLevel);
 }
 
 function getPrestigeGain() {

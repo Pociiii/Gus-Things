@@ -412,19 +412,29 @@ a:hover {
 
 .archive-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 12px;
-  margin-top: 10px;
-  max-width: 550px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 50px;
+  max-width: 900px;
   margin: 0 auto;
+   justify-self: center;
 }
 
 .archive-item {
-  background: rgba(0,0,0,0.45);
+  background:
+    linear-gradient(180deg, rgba(40,0,40,0.55), rgba(0,0,0,0.65)),
+    radial-gradient(circle at top, rgba(255,0,200,0.12), transparent 70%);
+
   border: 1px solid rgba(255,0,255,0.4);
-  box-shadow: 0 0 12px rgba(255,0,255,0.25);
+  box-shadow:
+    0 0 12px rgba(255,0,255,0.25),
+    inset 0 0 18px rgba(255,0,255,0.08);
+
+  backdrop-filter: blur(6px);;
   padding: 16px;
   border-radius: 8px;
+  max-width: 260px;
+  width: 100%;
+  justify-self: center;
 }
 
 .archive-item h3 {
