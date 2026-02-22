@@ -53,7 +53,7 @@ function getProductionCost() {
 function getSellPrice() {
   return Math.round(
     getBaseProductionValue() * 1.75 *
-    (1 + advertisingLevel * 0.002) *
+    (1 + advertisingLevel * 0.05) *
     (1 + influence * 0.003)
   );
 }
@@ -297,7 +297,7 @@ function updateUI() {
   document.getElementById("prodCost").innerText =
     formatNumber(getProductionCost());
   document.getElementById("sellPrice").innerText =
-    formatNumber(getSellPrice());
+     formatNumber(getSellPrice());
   document.getElementById("profitItem").innerText =
     formatNumber(getSellPrice() - getProductionCost());
   document.getElementById("prodTime").innerText =
