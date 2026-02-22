@@ -88,7 +88,7 @@ function getSaleInterval() {
 }
 
 function getGuaranteedOutput() {
-  return 1 + Math.floor(speedLevel / 12);
+  return 1 + Math.floor(speedLevel / 10);
 }
 
 function getBonusOutputChance() {
