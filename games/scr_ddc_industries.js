@@ -46,7 +46,7 @@ function getBaseProductionValue() {
 function getProductionCost() {
   return Math.round(
     getBaseProductionValue() *
-    Math.pow(0.99, efficiencyLevel)
+    Math.pow(0.98, efficiencyLevel)
   );
 }
 
@@ -70,7 +70,7 @@ function getSpeedCost() {
 }
 
 function getEfficiencyCost() {
-  return 120 * Math.pow(1.7, efficiencyLevel);
+  return 100 * Math.pow(1.7, efficiencyLevel);
 }
 
 function getDemand() {
